@@ -1,0 +1,164 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+:root {
+    --main-blue: #007FFF;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: fit-content;
+    margin: 20px auto;
+
+    input {
+        border: 2px solid var(--main-blue);
+        border-radius: 10px;
+        padding: 10px 12px;
+    }
+
+    button {
+        all: unset;
+        border-radius: 10px;
+        padding: 10px 12px;
+        background-color: var(--main-blue);
+        color: white;
+        text-transform: capitalize;
+        cursor: pointer;
+        width: 70px;
+    }
+}
+
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    width: 70%;
+    margin: 20px auto;
+    gap: 25px;
+
+    .todo {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        width: 100%;
+        padding: 20px 25px;
+        border-radius: 10px;
+        background-color: #F0F0F0;
+        border: 2px solid var(--main-blue);
+
+        .left {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            .title {
+                font-size: 18px;
+                font-weight: 600;
+            }
+            .time {
+                font-size: 14px;
+                font-weight: 500;
+                color: rgba(0,0,0,.5);
+            }
+        }
+
+        button {
+            all: unset;
+            cursor: pointer;
+        }
+    }
+
+}
+/* Стили для диалога, который всегда видим */
+dialog {
+    position: fixed; /* Фиксированное положение */
+    top: 50%; /* Центрируем по вертикали */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translate(-50%, -50%); /* Центрирование с учетом размера */
+    background-color: transparent; /* Прозрачный фон у самого диалога */
+    border: none; /* Убираем стандартную рамку */
+    z-index: 1000; /* Позиционируем поверх остальных элементов */
+    width: 400px; /* Ширина диалога */
+    max-width: 90%; /* Ограничиваем ширину диалога на маленьких экранах */
+}
+
+/* Стили для бекдропа */
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5); /* Темный полупрозрачный фон */
+    position: fixed; /* Фиксированное положение */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999; /* Бекдроп за диалогом */
+}
+
+/* Стили для формы внутри диалога */
+form[name="change-todo"] {
+    width: 100%; /* Форма занимает всю ширину диалога */
+    background-color: #fff; /* Белый фон для формы */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    display: block;
+}
+
+/* Стили для поля ввода "title" (text input) */
+form[name="change-todo"] input[type="text"],
+form[name="change-todo"] input[type="datetime"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Стили для чекбокса (checkbox) */
+form[name="change-todo"] input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Контейнер для кнопок */
+form[name="change-todo"] .btns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+/* Стили для кнопок */
+form[name="change-todo"] button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+/* Стили для кнопки "save changes" */
+form[name="change-todo"] button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+form[name="change-todo"] button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Стили для кнопки "cancel" */
+form[name="change-todo"] button:not([type="submit"]) {
+    background-color: #f44336;
+    color: white;
+}
+
+form[name="change-todo"] button:not([type="submit"]):hover {
+    background-color: #e53935;
+}
